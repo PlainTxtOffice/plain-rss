@@ -95,6 +95,6 @@ setup, everyday tasks, settings, and troubleshooting.
 
 ## License
 
-Plain RSS is proprietary software. Copyright © 2026 Tripp. All rights
-reserved. The source is published for reference only; see [LICENSE](LICENSE)
-for the terms.
+Plain RSS is proprietary software. Copyright © 2026 Plain Text Office LLC. All
+rights reserved. The source is published for reference only; see
+[LICENSE](LICENSE) for the terms.
