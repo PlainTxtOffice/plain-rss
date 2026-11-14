@@ -50,12 +50,12 @@ filenames, URLs, tokens or other private content. Apple controls its
 system-generated reports; we cannot guarantee those reports contain no sensitive
 information.
 
-## Feedback on Android
+## Feedback on iOS and Android
 
 Send Feedback opens a draft in your email app or the contact form in your
-browser. The email draft includes the app version, Android version and device
-model. Your feeds and articles are not included. Nothing is sent unless you send
-it.
+browser. The email draft includes the app version, the iOS or Android version
+and the device model. Your feeds and articles are not included. Nothing is sent
+unless you send it.
 
 ## Questions
 

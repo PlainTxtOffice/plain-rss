@@ -13,6 +13,7 @@
 </p>
 
 <p align="center">
+  <a href="#download">Download</a> ·
   <a href="docs/USER_MANUAL.md">User manual</a> ·
   <a href="docs/PRIVACY.md">Privacy</a>
 </p>
@@ -25,9 +26,10 @@
 Plain RSS brings updates from the websites you choose into one reader, with no
 account and no feed service in between. Subscribe to feeds, refresh their
 articles, and open the original story when you want to read more. Your
-subscriptions and articles are stored on your own device. Windows provides a
-three-pane desktop reader; iOS and Android add a saved article library with
-folders, read status, and stars.
+subscriptions are stored on your own device. iOS and Android also save
+downloaded articles there; Windows keeps them only until you close the app.
+Windows provides a three-pane desktop reader; iOS and Android add a saved
+article library with folders, read status, and stars.
 
 <!-- Verified from: platform/windows/plain_rss/gui/views/root_window/window.py; platform/ios/plain RSS/ContentView.swift; platform/ios/plain RSS/Item.swift; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/viewmodel/ReaderViewModel.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/storage/LibraryStore.kt -->
 
@@ -37,6 +39,8 @@ folders, read status, and stars.
   articles, and open original stories in your browser.
 - **Windows:** browse subscriptions, article lists, and previews side by side;
   customize date displays and column sorting; export subscriptions as JSON.
+- **iOS and Android:** add a feed from a website's address when you do not
+  know the feed address; the app finds the feed the page advertises.
 - **iOS and Android:** browse all, unread, or starred articles; search article
   titles and summaries; organize feeds into folders; import and export OPML
   subscriptions.
@@ -44,9 +48,10 @@ folders, read status, and stars.
   article retention, and load remote reader images only when you choose.
 - **iOS and Android:** pull down to refresh, and swipe an article to mark it
   read or star it.
-- **Android:** send a bug report or feature request from inside the app.
+- **iOS and Android:** send a bug report or feature request from inside the
+  app. On Windows, use the [contact form](https://plaintxtoffice.com/contact/).
 
-<!-- Verified from: platform/windows/plain_rss/gui/views/root_window/window.py; platform/windows/plain_rss/config/settings.py; platform/ios/plain RSS/ContentView.swift; platform/ios/plain RSS/ReaderSettings.swift; platform/ios/plain RSS/OPML.swift; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/PlainRssScreen.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/Dialogs.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/Feedback.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/domain/OpmlCodec.kt -->
+<!-- Verified from: platform/windows/plain_rss/gui/views/root_window/window.py; platform/windows/plain_rss/config/settings.py; platform/ios/plain RSS/ContentView.swift; platform/ios/plain RSS/ReaderSettings.swift; platform/ios/plain RSS/OPML.swift; platform/ios/plain RSS/FeedFetcher.swift; platform/ios/plain RSS/Feedback.swift; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/network/FeedFetcher.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/PlainRssScreen.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/Dialogs.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/Feedback.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/domain/OpmlCodec.kt -->
 
 ## App Screenshot
 
@@ -72,6 +77,16 @@ folders, read status, and stars.
 
 The iOS app uses its own navigation and controls; its screenshot will be added
 when a capture is available.
+
+## Download
+
+| Platform | Download | Notes |
+| --- | --- | --- |
+| Android | [Google Play](https://play.google.com/store/apps/details?id=com.plaintxtoffice.plainrss) | Free on Google Play. Requires Android 8.0 or later. |
+
+The Windows and iOS apps have not been released yet.
+
+<!-- Verified from: platform/android/app/build.gradle.kts [applicationId, minSdk] -->
 
 ## User Manual
 
