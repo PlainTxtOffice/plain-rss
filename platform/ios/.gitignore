@@ -12,6 +12,7 @@ DerivedData/
 *.xcresult
 
 # Xcode per-user settings (keep shared projects, workspaces, and schemes)
+/Signing.local.xcconfig
 xcuserdata/
 *.xcuserstate
 *.xccheckout

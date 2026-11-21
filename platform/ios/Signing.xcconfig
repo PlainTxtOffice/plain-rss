@@ -1,0 +1,2 @@
+// Device and distribution builds can supply DEVELOPMENT_TEAM locally.
+#include? "Signing.local.xcconfig"
