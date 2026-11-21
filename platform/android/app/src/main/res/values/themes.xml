@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- values-night/themes.xml holds the dark variant. The article WebView reads
+         light or dark from this window theme, so both must exist. -->
+    <style name="Theme.PlainRss" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>

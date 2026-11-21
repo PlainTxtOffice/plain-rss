@@ -1,0 +1,3 @@
+/build
+# Signed bundles and mapping files from Android Studio's signing wizard.
+/release

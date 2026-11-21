@@ -1,0 +1,24 @@
+*.iml
+.gradle
+/local.properties
+.idea/
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+.kotlin/
+local.properties
+!**/data/
+!**/data/**
+
+# Release signing: the upload keystore and its passwords never enter Git.
+/keystore.properties
+*.jks
+*.keystore
+
+# Play Store listing graphics; kept locally, not committed.
+/assets/store/
+
+# Android Studio "Inspect Code" exports
+/problems/

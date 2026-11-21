@@ -1,0 +1,42 @@
+# last updated 2026-03-01
+# Python-generated files
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+__pycache__/
+
+# Nuitka build artifacts
+*.build/
+*.dist/
+*.onefile-build/
+
+# virtual environments
+.venv**
+
+# directories
+logs/
+.pytest-temp/
+build/
+main.build/
+main.dist/
+main.onefile-build/
+.pytest_cache/
+
+
+# files
+*.pdf
+*.db
+.env
+
+dev-docs/TODO.txt
+platform/windows/data/subscriptions.json
+platform/windows/data/settings.json
+dev-docs/gui_design.md
+dev-docs/packaging/nuitka/installing_nuitka.md
+.agents/memory.local.jsonl
+.agents/memory.local.jsonl.lock
+.DS_Store
+# Private Nuitka setup notes hold an access token; never commit them.
+installing_nuitka.md

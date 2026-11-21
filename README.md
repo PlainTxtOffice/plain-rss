@@ -1,4 +1,4 @@
-<!-- last_updated: 2026-11-13 -->
+<!-- last_updated: 2026-11-20 -->
 <!-- Authoring guidance: dev-docs/specs/README_SPEC.instructions.md -->
 <!-- rumdl-disable MD033 MD041 -->
 <p align="center">
@@ -95,6 +95,5 @@ setup, everyday tasks, settings, and troubleshooting.
 
 ## License
 
-Plain RSS is proprietary software. Copyright © 2026 Plain Text Office LLC. All
-rights reserved. The source is published for reference only; see
-[LICENSE](LICENSE) for the terms.
+Plain RSS is licensed under the [MIT License](LICENSE).
+Copyright © 2026 Plain Text Office LLC.

@@ -1,6 +1,13 @@
+---
+privacy_updated:
+  ios: "2026-11-20"
+  android: "2026-10-02"
+---
+
 # plain RSS privacy policy — publication draft
 
-Updated October 2, 2026.
+Each app's Privacy screen shows the date it was last changed. Those dates are
+listed per platform as `privacy_updated` at the top of this file.
 
 ## On your device
 

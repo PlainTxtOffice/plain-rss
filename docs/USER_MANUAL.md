@@ -93,7 +93,7 @@ closing. A distributed executable, if provided, is named **Plain RSS.exe**.
 
 ### Start on iOS
 
-Open the installed **plain RSS** app. On a compact display, start from the feed
+Open the installed **Plain RSS** app. On a compact display, start from the feed
 list; on a wider display, the app can show multiple columns. Automatic refresh
 is enabled by default and checks feeds on opening or returning to the app,
 with at least 15 minutes between automatic attempts. Return to the Home Screen
@@ -343,7 +343,7 @@ uses the innermost enclosing folder rather than a nested folder hierarchy.
 ### Export iOS and Android subscriptions
 
 Choose **More > Export OPML…**, then save the file at the destination offered by
-the device. The default filename is **plain RSS Subscriptions**. Export includes
+the device. The default filename is **Plain RSS Subscriptions**. Export includes
 feed titles, URLs, and folder grouping for feeds; it does not export article
 text, read status, or stars. Empty folders have no feed records to export. The
 system file picker handles destination and replacement choices.

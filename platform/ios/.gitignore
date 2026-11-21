@@ -1,0 +1,34 @@
+# macOS metadata
+.DS_Store
+._*
+
+# Xcode build products and generated output
+build/
+DerivedData/
+*.xcarchive
+*.ipa
+*.dSYM
+*.dSYM.zip
+*.xcresult
+
+# Xcode per-user settings (keep shared projects, workspaces, and schemes)
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+
+# Swift Package Manager build output and local workspace state
+.build/
+.swiftpm/
+
+# Fastlane generated output
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/
+fastlane/test_output/
+
+# Debug feedback pulled from devices (personal data)
+dev-feedback/
+
+# App Store listing graphics; kept locally, not committed.
+/assets/store/
