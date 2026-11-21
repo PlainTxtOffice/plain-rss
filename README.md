@@ -13,6 +13,14 @@
 </p>
 
 <p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/PlainTxtOffice/plain-rss" alt="MIT license"></a>
+  <a href="https://github.com/PlainTxtOffice/plain-rss/actions/workflows/ci.yml"><img src="https://github.com/PlainTxtOffice/plain-rss/actions/workflows/ci.yml/badge.svg?branch=main" alt="Windows CI status"></a>
+  <a href="https://github.com/PlainTxtOffice/plain-rss/actions/workflows/windows-build.yml"><img src="https://github.com/PlainTxtOffice/plain-rss/actions/workflows/windows-build.yml/badge.svg?branch=main" alt="Windows build status"></a>
+  <a href="https://github.com/PlainTxtOffice/plain-rss/actions/workflows/ios-build.yml"><img src="https://github.com/PlainTxtOffice/plain-rss/actions/workflows/ios-build.yml/badge.svg?branch=main" alt="iOS Simulator build status"></a>
+  <a href="https://github.com/PlainTxtOffice/plain-rss/actions/workflows/android-build.yml"><img src="https://github.com/PlainTxtOffice/plain-rss/actions/workflows/android-build.yml/badge.svg?branch=main" alt="Android build status"></a>
+</p>
+
+<p align="center">
   <a href="#download">Download</a> ·
   <a href="docs/USER_MANUAL.md">User manual</a> ·
   <a href="docs/PRIVACY.md">Privacy</a>
