@@ -32,8 +32,8 @@ not been released. Features differ between platforms.
 | Platform | Requirements and availability |
 | --- | --- |
 | Windows | Not released; there is no public installer. The source package declares Python 3.12 or later, PySide6, and defusedxml. A supported minimum Windows version is unknown. |
-| iOS | Free on the [App Store](https://apps.apple.com/app/id6837553488), version 1.0. Requires iOS 26.4 or later on iPhone or iPad. |
-| Android | Free on [Google Play](https://play.google.com/store/apps/details?id=com.plaintxtoffice.plainrss). Requires Android 8.0 or later. |
+| iOS | Version 1.0 on the [App Store](https://apps.apple.com/app/id6837553488). Requires iOS 26.4 or later on iPhone or iPad. |
+| Android | Available on [Google Play](https://play.google.com/store/apps/details?id=com.plaintxtoffice.plainrss). Requires Android 8.0 or later. |
 
 Install the Android app from Google Play or the iOS app from the App Store;
 neither needs an account or further setup. Once an installed copy is

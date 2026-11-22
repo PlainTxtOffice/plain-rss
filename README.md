@@ -2,7 +2,7 @@
 <!-- Authoring guidance: dev-docs/specs/README_SPEC.instructions.md -->
 <!-- rumdl-disable MD033 MD041 -->
 <p align="center">
-  <img src="assets/icons/plain_rss.svg" alt="Plain RSS icon" width="96">
+  <img src="assets/icons/icon-github-readme.svg" alt="Plain RSS icon" width="96">
 </p>
 
 <h1 align="center">Plain RSS</h1>
@@ -90,8 +90,8 @@ when a capture is available.
 
 | Platform | Download | Notes |
 | --- | --- | --- |
-| Android | [Google Play](https://play.google.com/store/apps/details?id=com.plaintxtoffice.plainrss) | Free on Google Play. Requires Android 8.0 or later. |
-| iOS | [App Store](https://apps.apple.com/app/id6837553488) | Free on the App Store, version 1.0. Requires iOS 26.4 or later on iPhone or iPad. |
+| Android | [Google Play](https://play.google.com/store/apps/details?id=com.plaintxtoffice.plainrss) | Requires Android 8.0 or later. |
+| iOS | [App Store](https://apps.apple.com/app/id6837553488) | Version 1.0. Requires iOS 26.4 or later on iPhone or iPad. |
 
 The Windows app has not been released yet.
 
