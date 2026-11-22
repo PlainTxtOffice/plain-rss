@@ -1,4 +1,4 @@
-<!-- last_updated: 2026-11-20 -->
+<!-- last_updated: 2026-11-22 -->
 <!-- Authoring guidance: dev-docs/specs/README_SPEC.instructions.md -->
 <!-- rumdl-disable MD033 MD041 -->
 <p align="center">
@@ -9,7 +9,7 @@
 
 <p align="center">
   Follow RSS and Atom feeds and read articles in a focused interface on
-  Windows, iOS, and Android.
+  Android and iOS.
 </p>
 
 <p align="center">
@@ -91,15 +91,25 @@ when a capture is available.
 | Platform | Download | Notes |
 | --- | --- | --- |
 | Android | [Google Play](https://play.google.com/store/apps/details?id=com.plaintxtoffice.plainrss) | Free on Google Play. Requires Android 8.0 or later. |
+| iOS | [App Store](https://apps.apple.com/app/id6837553488) | Free on the App Store, version 1.0. Requires iOS 26.4 or later on iPhone or iPad. |
 
-The Windows and iOS apps have not been released yet.
+The Windows app has not been released yet.
 
-<!-- Verified from: platform/android/app/build.gradle.kts [applicationId, minSdk] -->
+<!-- Verified from: platform/android/app/build.gradle.kts [applicationId, minSdk]; platform/ios/plain RSS.xcodeproj/project.pbxproj [MARKETING_VERSION, IPHONEOS_DEPLOYMENT_TARGET] -->
 
 ## User Manual
 
 See the [User Manual](docs/USER_MANUAL.md) for installation availability,
 setup, everyday tasks, settings, and troubleshooting.
+
+## Feedback
+
+Send bug reports and feature requests to
+[support@plaintxtoffice.com](mailto:support@plaintxtoffice.com), through the
+[contact page](https://plaintxtoffice.com/contact/), or in
+[GitHub Issues](https://github.com/PlainTxtOffice/plain-rss/issues). In the
+Android and iOS apps, choose **More > Send Feedback** to prepare an email with
+the app and device details filled in, or to open the contact page.
 
 ## License
 

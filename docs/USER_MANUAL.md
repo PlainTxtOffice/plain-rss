@@ -1,5 +1,5 @@
 ---
-last_updated: 2026-11-13
+last_updated: 2026-11-22
 version: 5.0.2
 product_versions:
   windows: "0.1.0"
@@ -19,9 +19,9 @@ reader.
 
 This manual describes the current repository implementation. Windows metadata
 reports version **0.1.0**; iOS application metadata reports **1.0**, build
-**1**; Android application metadata reports **1.1.0**. The Android app is
-available on Google Play. The Windows and iOS apps have not been released.
-Features differ between platforms.
+**2**; Android application metadata reports **1.1.0**. The Android app is
+available on Google Play and the iOS app on the App Store. The Windows app has
+not been released. Features differ between platforms.
 
 <!-- Verified from: platform/windows/pyproject.toml; platform/ios/plain RSS.xcodeproj/project.pbxproj; platform/android/app/build.gradle.kts; platform/windows/plain_rss/gui/views/root_window/window.py; platform/ios/plain RSS/ContentView.swift; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/PlainRssScreen.kt -->
 
@@ -32,13 +32,12 @@ Features differ between platforms.
 | Platform | Requirements and availability |
 | --- | --- |
 | Windows | Not released; there is no public installer. The source package declares Python 3.12 or later, PySide6, and defusedxml. A supported minimum Windows version is unknown. |
-| iOS | Not released; there is no App Store or TestFlight link. The Xcode project declares an iOS 26.4 deployment target. |
+| iOS | Free on the [App Store](https://apps.apple.com/app/id6837553488), version 1.0. Requires iOS 26.4 or later on iPhone or iPad. |
 | Android | Free on [Google Play](https://play.google.com/store/apps/details?id=com.plaintxtoffice.plainrss). Requires Android 8.0 or later. |
 
-Google Play is the only public download route. Install the Android app from
-its Google Play listing; it needs no account or further setup. The iOS
-deployment target is a project setting, not evidence of testing on every
-compatible device. Once an installed copy is available, follow the tasks below.
+Install the Android app from Google Play or the iOS app from the App Store;
+neither needs an account or further setup. Once an installed copy is
+available, follow the tasks below.
 
 <!-- Verified from: platform/windows/pyproject.toml; platform/ios/plain RSS.xcodeproj/project.pbxproj; platform/android/app/build.gradle.kts [applicationId, minSdk] -->
 
@@ -251,7 +250,10 @@ Nothing is sent unless you send it. If the device has no email app or no
 browser, the app shows a message naming the other option.
 
 The Windows reader has no feedback command. To report a bug or request a
-feature for it, use the contact form at <https://plaintxtoffice.com/contact/>.
+feature from any platform, email
+[support@plaintxtoffice.com](mailto:support@plaintxtoffice.com), use the
+contact form at <https://plaintxtoffice.com/contact/>, or open an issue in
+[GitHub Issues](https://github.com/PlainTxtOffice/plain-rss/issues).
 
 <!-- Verified from: platform/ios/plain RSS/Feedback.swift [Feedback, FeedbackView]; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/Feedback.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/Dialogs.kt [FeedbackDialog]; platform/android/app/src/main/res/values/strings.xml; platform/windows/plain_rss/gui/views/root_window/window.py [_create_menu_bar] -->
 
@@ -407,7 +409,9 @@ Subscriptions, folders, saved article text, read status, and stars live in the
 app's on-device library. Preferences persist on the device. The library is not
 a temporary cache; it remains available offline. Use app controls to change it,
 and OPML to transfer subscriptions. The exact sandbox file location is
-**Unknown.** and is not a user-editable path.
+**Unknown.** and is not a user-editable path. Your feeds, articles, and
+settings are included in iCloud and computer backups of your iPhone or iPad
+when you have those turned on.
 
 Reader images use temporary memory and nonpersistent website storage; there is
 no persistent image-cache clearing control. External browsers and exported
