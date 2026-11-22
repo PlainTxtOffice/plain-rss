@@ -1,6 +1,6 @@
 ---
 last_updated: 2026-11-22
-version: 5.0.2
+version: 6.0.0
 product_versions:
   windows: "0.1.0"
   ios: "1.0"
@@ -12,16 +12,17 @@ generated_from: "dev-docs/specs/USER_MANUAL_SPEC.instructions.md"
 
 ## Overview
 
-Plain RSS is an RSS and Atom reader for people who want to follow websites
-from one place. Windows uses a desktop window with subscriptions, articles,
-and previews. iOS and Android use a feed list, article list, and article
-reader.
+Plain RSS is an RSS and Atom reader for people who want to follow websites from
+one place. The Windows app (in development) uses a desktop window with
+subscriptions, articles, and previews. iOS and Android use a feed list, article
+list, and article reader.
 
 This manual describes the current repository implementation. Windows metadata
 reports version **0.1.0**; iOS application metadata reports **1.0**, build
 **2**; Android application metadata reports **1.1.0**. The Android app is
-available on Google Play and the iOS app on the App Store. The Windows app has
-not been released. Features differ between platforms.
+available on Google Play and the iOS app on the App Store. The Windows app is
+in development and has no released download. Features differ between
+platforms.
 
 <!-- Verified from: platform/windows/pyproject.toml; platform/ios/plain RSS.xcodeproj/project.pbxproj; platform/android/app/build.gradle.kts; platform/windows/plain_rss/gui/views/root_window/window.py; platform/ios/plain RSS/ContentView.swift; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/PlainRssScreen.kt -->
 
@@ -31,7 +32,7 @@ not been released. Features differ between platforms.
 
 | Platform | Requirements and availability |
 | --- | --- |
-| Windows | Not released; there is no public installer. The source package declares Python 3.12 or later, PySide6, and defusedxml. A supported minimum Windows version is unknown. |
+| Windows (in development) | Not released yet; there is no download to install. |
 | iOS | Version 1.0 on the [App Store](https://apps.apple.com/app/id6837553488). Requires iOS 26.4 or later on iPhone or iPad. |
 | Android | Available on [Google Play](https://play.google.com/store/apps/details?id=com.plaintxtoffice.plainrss). Requires Android 8.0 or later. |
 
@@ -40,22 +41,6 @@ neither needs an account or further setup. Once an installed copy is
 available, follow the tasks below.
 
 <!-- Verified from: platform/windows/pyproject.toml; platform/ios/plain RSS.xcodeproj/project.pbxproj; platform/android/app/build.gradle.kts [applicationId, minSdk] -->
-
-### Set up the Windows source edition
-
-If you have the repository and Python installed, open PowerShell in
-`platform/windows/` and run:
-
-```powershell
-python -m venv .venv
-.venv/Scripts/python.exe -m pip install -e .
-```
-
-This installs the Windows application and its declared dependencies into that
-folder's environment. Internet access may be needed to obtain dependencies.
-You do not need to activate the environment when using the full commands below.
-
-<!-- Verified from: platform/windows/README.md; platform/windows/pyproject.toml; platform/windows/AGENTS.md -->
 
 ### Add your first subscription
 
@@ -72,23 +57,12 @@ advertises. No account sign-in is part of the implemented feed-adding workflow.
 
 ### Start on Windows
 
-From `platform/windows/`, run:
+The Windows app is in development and has no released download yet. When it
+starts, the window opens and refreshes saved feeds. Choose **File > Quit** or
+close the window to exit. If a refresh is active, the app finishes stopping it
+before closing.
 
-```powershell
-.venv/Scripts/python.exe -m plain_rss.main
-```
-
-After installation into that environment, the equivalent command is:
-
-```powershell
-.venv/Scripts/plain-rss.exe
-```
-
-The window opens and refreshes saved feeds. Choose **File > Quit** or close the
-window to exit. If a refresh is active, the app finishes stopping it before
-closing. A distributed executable, if provided, is named **Plain RSS.exe**.
-
-<!-- Verified from: platform/windows/pyproject.toml; platform/windows/plain_rss/main.py; platform/windows/plain_rss/gui/app.py; platform/windows/plain_rss/gui/views/root_window/window.py [closeEvent]; platform/windows/scripts/nuitka/onefile.ps1 -->
+<!-- Verified from: platform/windows/plain_rss/main.py; platform/windows/plain_rss/gui/app.py; platform/windows/plain_rss/gui/views/root_window/window.py [closeEvent]; dev-docs/APPS.md (plaintxtoffice_manager) [Store Status, Windows: Code]; gh release list (no releases) -->
 
 ### Start on iOS
 
@@ -115,8 +89,8 @@ the device's Home navigation; there is no in-app Quit command.
 
 | Platform | Main areas and controls |
 | --- | --- |
-| Windows | Subscriptions on the left, **Article** and **Published** columns in the middle, and the selected article's preview on the right. Menus: **File**, **Feeds**, **Article**, and **Help**. |
-| iOS | **All Articles**, **Unread**, **Starred**, **Unfiled**, folders, and individual feeds. Use **Add Feed**, **Refresh**, **Folders**, and **More** from the feed list. **More** contains settings, privacy, and OPML actions. |
+| Windows (in development) | Subscriptions on the left, **Article** and **Published** columns in the middle, and the selected article's preview on the right. Menus: **File**, **Feeds**, **Article**, and **Help**. |
+| iOS | **All Articles**, **Unread**, **Starred**, **Unfiled**, folders, and individual feeds. Use **Add Feed**, **Refresh**, **Folders**, and **More** from the feed list. **More** contains settings, privacy, **Send Feedback**, and OPML actions. |
 | Android | **All Articles**, **Unread**, **Starred**, **Unfiled**, folders, and individual feeds. Use **Folders**, **Refresh**, **Add Feed**, and **More** at the top of the feed list. **More** contains **Import OPML…**, **Settings**, **Privacy**, **Send Feedback**, and **Export OPML…**. Each feed has an options button for moving, renaming, and removing it. |
 
 On Windows, drag the pane dividers to adjust the reading space. On iOS and
@@ -129,7 +103,7 @@ to return.
 
 ### Subscribe to a feed
 
-#### Add a Windows subscription
+#### Add a Windows subscription (in development)
 
 1. Choose **Feeds > Add feed** or **Add feed** on the toolbar.
 1. Enter the complete feed address in **Feed URL:** and accept the dialog.
@@ -234,32 +208,9 @@ for the app's offline privacy information.
 
 <!-- Verified from: platform/ios/plain RSS/ContentView.swift [ArticleDetailView]; platform/ios/plain RSS/PrivateArticleReader.swift; platform/ios/plain RSS/PrivacyPolicyView.swift; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/PlainRssScreen.kt [ArticleDetailPane]; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/viewmodel/ReaderViewModel.kt [allowImagesForCurrentArticle, selectArticle, onAppBackgrounded]; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/PrivateArticleReaderView.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/Dialogs.kt [PrivacyPolicyDialog] -->
 
-### Send feedback
-
-In the iOS or Android app, choose **More > Send Feedback**.
-
-- **Report a bug** and **Request a feature** open a draft in your email app,
-  addressed to `support@plaintxtoffice.com`. The draft already contains the app
-  version, the iOS or Android version, and the device model. Your feeds and
-  articles are not added; include a feed address yourself if the problem
-  involves one.
-- **Open contact form** opens <https://plaintxtoffice.com/contact/> in your
-  browser.
-
-Nothing is sent unless you send it. If the device has no email app or no
-browser, the app shows a message naming the other option.
-
-The Windows reader has no feedback command. To report a bug or request a
-feature from any platform, email
-[support@plaintxtoffice.com](mailto:support@plaintxtoffice.com), use the
-contact form at <https://plaintxtoffice.com/contact/>, or open an issue in
-[GitHub Issues](https://github.com/PlainTxtOffice/plain-rss/issues).
-
-<!-- Verified from: platform/ios/plain RSS/Feedback.swift [Feedback, FeedbackView]; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/Feedback.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/Dialogs.kt [FeedbackDialog]; platform/android/app/src/main/res/values/strings.xml; platform/windows/plain_rss/gui/views/root_window/window.py [_create_menu_bar] -->
-
 ## Settings and Preferences
 
-### Change Windows display preferences
+### Change Windows display preferences (in development)
 
 Choose **File > Settings...**, select a **Date display:** example, then choose
 **OK**. **Cancel** keeps the current setting. The default is month-first with a
@@ -304,7 +255,7 @@ Cleanup cannot be undone, and older articles may no longer be on the server.
 
 ## Importing and Exporting
 
-### Export Windows subscriptions
+### Export Windows subscriptions (in development)
 
 1. Choose **File > Export JSON...**.
 1. Select the destination filename and save.
@@ -360,39 +311,37 @@ conversion.
 
 | Platform | Command or control | Effect |
 | --- | --- | --- |
-| Windows | **Feeds > Add feed** | Subscribe to a URL. |
-| Windows | **Feeds > Refresh** | Refresh all subscriptions. |
-| Windows | **Feeds > Remove feed** | Immediately remove the selected subscription. |
-| Windows | **Article > Open article** | Open the selected article in the browser. |
-| Windows | **File > Settings...** | Change date display. |
-| Windows | **File > Export JSON...** | Save the subscription list. |
-| Windows | **Help > About Plain RSS** | Show application information. |
-| Windows | **File > Quit** | Close the application. |
+| Windows (in development) | **Feeds > Add feed** | Subscribe to a URL. |
+| Windows (in development) | **Feeds > Refresh** | Refresh all subscriptions. |
+| Windows (in development) | **Feeds > Remove feed** | Immediately remove the selected subscription. |
+| Windows (in development) | **Article > Open article** | Open the selected article in the browser. |
+| Windows (in development) | **File > Settings...** | Change date display. |
+| Windows (in development) | **File > Export JSON...** | Save the subscription list. |
+| Windows (in development) | **Help > Send Feedback...** | Open the feedback window. |
+| Windows (in development) | **Help > About Plain RSS** | Show application information. |
+| Windows (in development) | **File > Quit** | Close the application. |
 | iOS | **More**, swipe actions, and feed context menus | Access import/export, preferences, privacy, read/star controls, and feed organization. |
 | Android | **More**, swipe actions, article buttons, and feed options buttons | Access import/export, preferences, privacy, feedback, read/star controls, and feed organization. |
 
-Windows uses system-standard keyboard bindings for adding, refreshing,
-removing, opening, and quitting. Use the shortcuts displayed beside those
-commands in your installed app; a fixed key list is not verified here.
-The Windows launch commands in Starting the Program open the graphical app;
-no separate task-oriented command-line options are implemented. Dedicated iOS
-and Android keyboard shortcuts are not declared in the inspected interfaces.
+The Windows app (in development) uses system-standard keyboard bindings for
+adding, refreshing, removing, opening, and quitting, and shows its shortcuts
+beside each menu command; a fixed key list is not verified here. It has no
+command-line options for tasks. Dedicated iOS and Android keyboard shortcuts are
+not declared in the inspected interfaces.
 
-<!-- Verified from: platform/windows/plain_rss/gui/views/root_window/window.py [_create_actions]; platform/windows/plain_rss/main.py; platform/ios/plain RSS/ContentView.swift; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/PlainRssScreen.kt -->
+<!-- Verified from: platform/windows/plain_rss/gui/views/root_window/window.py [_create_actions, _create_menu_bar]; platform/windows/plain_rss/gui/feedback.py [add_feedback_action]; platform/windows/plain_rss/main.py; platform/ios/plain RSS/ContentView.swift; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/PlainRssScreen.kt -->
 
 ## Your Data Files
 
 ### Locate Windows files
 
-| File | Source edition location | Packaged edition location |
-| --- | --- | --- |
-| Subscriptions | `platform/windows/data/subscriptions.json` | `%LOCALAPPDATA%/plain-rss/data/subscriptions.json` |
-| Display preferences | `platform/windows/data/settings.json` | `%LOCALAPPDATA%/plain-rss/data/settings.json` |
-| Application log | `platform/windows/logs/rss_reader.log` | `%LOCALAPPDATA%/plain-rss/logs/rss_reader.log` |
+The Windows app is in development. It uses these locations:
 
-Builds before 2026-10-28 used `%LOCALAPPDATA%/Plain RSS/`. The packaged
-edition renames that folder to `plain-rss` on first launch when the new folder
-does not exist yet.
+| File | Location |
+| --- | --- |
+| Subscriptions | `%LOCALAPPDATA%/plain-rss/data/subscriptions.json` |
+| Display preferences | `%LOCALAPPDATA%/plain-rss/data/settings.json` |
+| Application log | `%LOCALAPPDATA%/plain-rss/logs/rss_reader.log` |
 
 Use the application controls to change subscriptions and preferences. Manual
 editing is not required. The subscription file uses the JSON list shown above.
@@ -406,11 +355,11 @@ restarting; exporting subscriptions does not save article contents.
 ### Understand iOS storage
 
 Subscriptions, folders, saved article text, read status, and stars live in the
-app's on-device library. Preferences persist on the device. The library is not
-a temporary cache; it remains available offline. Use app controls to change it,
-and OPML to transfer subscriptions. The exact sandbox file location is
-**Unknown.** and is not a user-editable path. Your feeds, articles, and
-settings are included in iCloud and computer backups of your iPhone or iPad
+app's on-device library, inside the app's private storage. Preferences persist
+on the device. The library is not a temporary cache; it remains available
+offline. Neither is at a user-editable path; use app controls to change them,
+and OPML to transfer subscriptions. Your feeds, articles, and settings are
+included in iCloud and computer backups of your iPhone or iPad
 when you have those turned on.
 
 Reader images use temporary memory and nonpersistent website storage; there is
@@ -441,14 +390,14 @@ browsers and exported files have their own storage outside the reader.
 
 | Symptom | Likely Cause | Resolution |
 | --- | --- | --- |
-| Windows rejects a feed URL | Missing or unsupported scheme | Enter a complete HTTP or HTTPS feed address. |
+| Windows (in development) rejects a feed URL | Missing or unsupported scheme | Enter a complete HTTP or HTTPS feed address. |
 | A feed already exists | The URL is already subscribed | Select the existing feed instead of adding it again. |
 | iOS or Android reports an insecure connection | The server uses blocked HTTP | Try the publisher's HTTPS feed URL. |
 | iOS or Android reports that no RSS or Atom feed was found | The address is a web page that advertises no feed | Enter the address of the feed itself. |
 | Adding or importing on iOS or Android asks you to wait | A refresh is in progress | Wait for it to finish, then retry. |
 | Feed refresh fails | Network, server, or feed parsing error | Check the displayed error and feed address, then retry Refresh. |
-| Windows has no articles after restarting | Downloaded articles are not stored between runs | Allow startup refresh to complete or choose Refresh. |
-| Windows cannot save display settings | The settings file cannot be written | Check access to the data folder and retry. |
+| Windows (in development) has no articles after restarting | Downloaded articles are not stored between runs | Allow startup refresh to complete or choose Refresh. |
+| Windows (in development) cannot save display settings | The settings file cannot be written | Check access to the data folder and retry. |
 | iOS or Android shows **Your data couldn't be opened** | The persistent library could not be opened | Choose **Retry**. **Continue Without Saving** uses temporary storage; changes made in that mode will not persist. Existing saved data is left untouched. |
 | iOS or Android images are absent | Remote images are disabled or a resource is rejected | Use Load images for the current article. Unsupported, oversized, or failed images may remain absent; open the original article if needed. |
 | OPML import rejects a file | It is not a valid OPML document | Export OPML from the source reader; renaming another format does not convert it. |
@@ -461,16 +410,16 @@ browsers and exported files have their own storage outside the reader.
 
 On iOS and Android, previously saved article text remains available offline.
 Remote images, new refreshes, and external article links need network access.
-Windows keeps articles only for the current session and reloads them after
-restarting.
+The Windows app (in development) keeps articles only for the current session
+and reloads them after restarting.
 
 <!-- Verified from: platform/ios/plain RSS/ReaderSettings.swift; platform/windows/plain_rss/gui/views/root_window/window.py; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/storage/LibraryStore.kt; platform/android/app/src/main/res/values/strings.xml [settings_storage_library_note] -->
 
 ### Does export preserve my whole library?
 
-No. Windows JSON exports subscriptions. OPML on iOS and Android exports
-subscriptions and their folder grouping, not article contents, read state, or
-stars.
+No. JSON export in the Windows app (in development) saves subscriptions. OPML on
+iOS and Android exports subscriptions and their folder grouping, not article
+contents, read state, or stars.
 
 <!-- Verified from: platform/windows/plain_rss/domains/feeds/rss.py [SubscriptionRepository]; platform/ios/plain RSS/OPML.swift [OPMLWriter]; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/domain/OpmlCodec.kt [OpmlWriter] -->
 
@@ -488,6 +437,39 @@ On iOS and Android, stars are exempt from retention cleanup. Removing the feed
 still deletes its starred articles. OPML export is not an article backup.
 
 <!-- Verified from: platform/ios/plain RSS/ReaderSettings.swift; platform/ios/plain RSS/ContentView.swift; platform/ios/plain RSS/OPML.swift; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/domain/ReaderLibrary.kt [excessArticles]; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/viewmodel/ReaderViewModel.kt [removeFeed] -->
+
+## Feedback
+
+To report a bug or request a feature, email
+[support@plaintxtoffice.com](mailto:support@plaintxtoffice.com), use the
+contact form at <https://plaintxtoffice.com/contact/>, or open an issue in
+[GitHub Issues](https://github.com/PlainTxtOffice/plain-rss/issues), since
+Plain RSS is open source.
+
+<!-- Verified from: dev-docs/APPS.md (plaintxtoffice_manager) [Source and repositories: Plain RSS open source]; gh repo view PlainTxtOffice/plain-rss [hasIssuesEnabled] -->
+
+Each app also has a feedback window:
+
+| Platform | How to open feedback |
+| --- | --- |
+| iOS | Choose **More > Send Feedback**. |
+| Android | Choose **More > Send Feedback**. |
+| Windows (in development) | Choose **Help > Send Feedback...**. |
+
+- **Report a bug** and **Request a feature** open a draft in your email app,
+  addressed to `support@plaintxtoffice.com`. The draft already contains the app
+  version and your system version; on iOS and Android it also contains the
+  device model. Your feeds and articles are not added; include a feed address
+  yourself if the problem involves one.
+- **Open contact form** opens <https://plaintxtoffice.com/contact/> in your
+  browser.
+
+On Windows the same buttons are labelled **Report a Bug**, **Request a
+Feature**, and **Open Contact Form**. Nothing is sent unless you send it. If
+there is no email app or no browser, the app shows a message naming the other
+option.
+
+<!-- Verified from: platform/ios/plain RSS/Feedback.swift [Feedback, FeedbackView]; platform/ios/plain RSS/ContentView.swift [showingFeedback]; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/Feedback.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/Dialogs.kt [FeedbackDialog]; platform/android/app/src/main/res/values/strings.xml; platform/windows/plain_rss/gui/feedback.py [FeedbackDialog, add_feedback_action]; platform/windows/plain_rss/gui/views/root_window/window.py [_create_menu_bar] -->
 
 ## Glossary
 

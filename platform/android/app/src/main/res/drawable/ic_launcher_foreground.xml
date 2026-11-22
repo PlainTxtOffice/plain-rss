@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generated from ../../assets/icons/icon.svg on its earlier 256-unit canvas (the master viewBox is now 8 8 240 240); regenerate to match. -->
+<!-- Hand-translated from assets/icons/icon.svg (viewBox 8 8 240 240, centred on 128,128).
+     Scale 0.7111 = 170.667 / 240 maps the master tile onto the 72dp visible area of the
+     108dp layer, keeping the artwork inside the 66dp safe zone. See platform/android/AGENTS.md. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
@@ -8,8 +10,8 @@
     <group
         android:pivotX="128"
         android:pivotY="128"
-        android:scaleX="0.62"
-        android:scaleY="0.62">
+        android:scaleX="0.7111"
+        android:scaleY="0.7111">
         <group
             android:translateX="2"
             android:translateY="-2">

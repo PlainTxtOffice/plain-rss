@@ -8,16 +8,16 @@
 <h1 align="center">Plain RSS</h1>
 
 <p align="center">
-  Follow RSS and Atom feeds and read articles in a focused interface on
-  Android and iOS.
+  A private, quiet reader for the websites you choose. Follow their RSS and
+  Atom feeds and read new articles in one place, with no account.
 </p>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/github/license/PlainTxtOffice/plain-rss" alt="MIT license"></a>
-  <a href="https://github.com/PlainTxtOffice/plain-rss/actions/workflows/ci.yml"><img src="https://github.com/PlainTxtOffice/plain-rss/actions/workflows/ci.yml/badge.svg?branch=main" alt="Windows CI status"></a>
-  <a href="https://github.com/PlainTxtOffice/plain-rss/actions/workflows/windows-build.yml"><img src="https://github.com/PlainTxtOffice/plain-rss/actions/workflows/windows-build.yml/badge.svg?branch=main" alt="Windows build status"></a>
-  <a href="https://github.com/PlainTxtOffice/plain-rss/actions/workflows/ios-build.yml"><img src="https://github.com/PlainTxtOffice/plain-rss/actions/workflows/ios-build.yml/badge.svg?branch=main" alt="iOS Simulator build status"></a>
+  <a href="https://play.google.com/store/apps/details?id=com.plaintxtoffice.plainrss"><img src="https://img.shields.io/badge/platform-Android-3DDC84" alt="Platform: Android, on Google Play"></a>
+  <a href="https://apps.apple.com/app/id6837553488"><img src="https://img.shields.io/badge/platform-iOS-555555" alt="Platform: iOS, on the App Store"></a>
   <a href="https://github.com/PlainTxtOffice/plain-rss/actions/workflows/android-build.yml"><img src="https://github.com/PlainTxtOffice/plain-rss/actions/workflows/android-build.yml/badge.svg?branch=main" alt="Android build status"></a>
+  <a href="https://github.com/PlainTxtOffice/plain-rss/actions/workflows/ios-build.yml"><img src="https://github.com/PlainTxtOffice/plain-rss/actions/workflows/ios-build.yml/badge.svg?branch=main" alt="iOS Simulator build status"></a>
 </p>
 
 <p align="center">
@@ -31,47 +31,58 @@
 
 ## About
 
-Plain RSS brings updates from the websites you choose into one reader, with no
-account and no feed service in between. Subscribe to feeds, refresh their
-articles, and open the original story when you want to read more. Your
-subscriptions are stored on your own device. iOS and Android also save
-downloaded articles there; Windows keeps them only until you close the app.
-Windows provides a three-pane desktop reader; iOS and Android add a saved
-article library with folders, read status, and stars.
+Plain RSS brings updates from the websites you choose into one quiet reader,
+with no account, no ads and no feed service in between. Subscribe to a site's
+feed, refresh when you want to see what is new, and read the articles in a
+clean reader. Your subscriptions and downloaded articles are stored on your own
+device. Plain RSS is available for Android and for iOS on iPhone and iPad.
 
-<!-- Verified from: platform/windows/plain_rss/gui/views/root_window/window.py; platform/ios/plain RSS/ContentView.swift; platform/ios/plain RSS/Item.swift; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/viewmodel/ReaderViewModel.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/storage/LibraryStore.kt -->
+<!-- Verified from: platform/ios/plain RSS/ContentView.swift; platform/ios/plain RSS/Item.swift; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/viewmodel/ReaderViewModel.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/storage/LibraryStore.kt; docs/PRIVACY.md -->
+
+## Why RSS
+
+Many websites publish an RSS or Atom feed: a simple list of their newest
+articles. A feed reader checks those lists for you, which changes how you
+follow the news.
+
+- **Fewer distractions.** There is no algorithmic feed, no ads and no
+  engagement tricks. You see what the sites you subscribed to published, in
+  the order you choose, and nothing else.
+- **Your sources in one place.** Instead of visiting each site to see what is
+  new, refresh once and every subscription is brought up to date together.
+- **Company news as it is published.** Many investor relations sites publish
+  their press releases, filings and event announcements as RSS feeds.
+  Subscribe to the companies you follow, and a new release shows up the next
+  time you refresh after the company posts it.
+
+By default, Plain RSS refreshes when you open or return to the app, at most
+once every 15 minutes; you can turn that off in Settings and refresh only when
+you choose. It does not check feeds in the background, so new articles arrive
+when you open it.
+
+<!-- Verified from: platform/ios/plain RSS/ContentView.swift [refreshIfStale]; platform/ios/plain RSS/ReaderSettings.swift; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/viewmodel/ReaderViewModel.kt [refreshIfStale, onAppForegrounded] -->
 
 ## Features
 
-- **Windows, iOS, and Android:** subscribe to RSS and Atom feeds, refresh
-  articles, and open original stories in your browser.
-- **Windows:** browse subscriptions, article lists, and previews side by side;
-  customize date displays and column sorting; export subscriptions as JSON.
-- **iOS and Android:** add a feed from a website's address when you do not
-  know the feed address; the app finds the feed the page advertises.
-- **iOS and Android:** browse all, unread, or starred articles; search article
-  titles and summaries; organize feeds into folders; import and export OPML
-  subscriptions.
-- **iOS and Android:** keep downloaded articles available offline, control
-  article retention, and load remote reader images only when you choose.
-- **iOS and Android:** pull down to refresh, and swipe an article to mark it
-  read or star it.
-- **iOS and Android:** send a bug report or feature request from inside the
-  app. On Windows, use the [contact form](https://plaintxtoffice.com/contact/).
+- Subscribe with a feed address, or with a website's address when you do not
+  know the feed; the app finds the feed the page advertises.
+- Read downloaded articles offline in a clean reader, and open the original
+  story in your browser when you want more.
+- Browse all, unread or starred articles, and search article titles and
+  summaries.
+- Organize feeds into folders and give them your own names.
+- Pull down to refresh, swipe an article to mark it read or star it, or mark
+  everything shown as read at once.
+- Choose how articles and feeds are sorted and how dates appear.
+- Limit how many articles each feed keeps; starred articles are always kept.
+- Keep remote images in articles off until you choose to load them for that
+  article; scripts in articles are always blocked.
+- Import subscriptions from another reader, or export them, as OPML.
+- Send a bug report or feature request from inside the app.
 
-<!-- Verified from: platform/windows/plain_rss/gui/views/root_window/window.py; platform/windows/plain_rss/config/settings.py; platform/ios/plain RSS/ContentView.swift; platform/ios/plain RSS/ReaderSettings.swift; platform/ios/plain RSS/OPML.swift; platform/ios/plain RSS/FeedFetcher.swift; platform/ios/plain RSS/Feedback.swift; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/network/FeedFetcher.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/PlainRssScreen.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/Dialogs.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/Feedback.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/domain/OpmlCodec.kt -->
+<!-- Verified from: platform/ios/plain RSS/ContentView.swift; platform/ios/plain RSS/ReaderSettings.swift; platform/ios/plain RSS/OPML.swift; platform/ios/plain RSS/FeedFetcher.swift; platform/ios/plain RSS/PrivateArticleReader.swift; platform/ios/plain RSS/Feedback.swift; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/network/FeedFetcher.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/PlainRssScreen.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/Dialogs.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/PrivateArticleReaderView.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/Feedback.kt; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/domain/OpmlCodec.kt -->
 
 ## App Screenshot
-
-### Windows
-
-<!-- rumdl-disable MD033 -->
-<p align="center">
-  <a href="platform/windows/assets/screenshots/main_window.png">
-    <img src="platform/windows/assets/screenshots/main_window.png" alt="Plain RSS on Windows showing subscriptions, an article list, and an article preview" width="640">
-  </a>
-</p>
-<!-- rumdl-enable MD033 -->
 
 ### Android
 
@@ -85,6 +96,16 @@ article library with folders, read status, and stars.
 
 The iOS app uses its own navigation and controls; its screenshot will be added
 when a capture is available.
+
+### Windows (not released)
+
+<!-- rumdl-disable MD033 -->
+<p align="center">
+  <a href="platform/windows/assets/screenshots/main_window.png">
+    <img src="platform/windows/assets/screenshots/main_window.png" alt="Plain RSS on Windows showing subscriptions, an article list, and an article preview" width="640">
+  </a>
+</p>
+<!-- rumdl-enable MD033 -->
 
 ## Download
 
