@@ -9,14 +9,11 @@ name = "plain-rss"
 version = "0.1.0"
 description = "A lightweight Windows desktop RSS subscriber and reader."
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.14"
 license = "MIT"
 authors = [{ name = "Tripp", email = "support@plaintxtoffice.com" }]
 license-files = []
-dependencies = [
-  "PySide6>=6.8,<7",
-  "defusedxml>=0.7.1,<1",
-]
+dependencies = ["PySide6>=6.8,<7", "defusedxml>=0.7.1,<1"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "ruff>=0.14", "rumdl>=0.0.170", "mypy>=1.18"]

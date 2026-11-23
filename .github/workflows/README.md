@@ -17,7 +17,7 @@ Each build workflow retains its artifacts for 30 days.
 
 ## Windows
 
-CI checks `platform/windows/` on Python 3.12 and 3.14. The build workflow uses
+CI checks `platform/windows/` on Python 3.14. The build workflow uses
 Python 3.14 and the
 [Nuitka scripts](../../platform/windows/scripts/nuitka/README.md) to package
 `Plain RSS.exe` as a standalone folder and a single executable.

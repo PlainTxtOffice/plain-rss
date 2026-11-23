@@ -19,7 +19,7 @@ EST = timezone(timedelta(hours=-5), name="EST")
 
 
 class EstFormatter(logging.Formatter):
-    """Format timestamps in fixed EST using a 12-hour clock."""
+    """Format timestamps in fixed EST."""
 
     def formatTime(
         self,
