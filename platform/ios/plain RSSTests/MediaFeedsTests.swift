@@ -69,7 +69,7 @@ struct MediaFeedsTests {
         #expect(article.link == "https://example.com/ep1")
         #expect(article.summary == "Show notes")
         #expect(article.contentHTML
-            == "<p>Show notes</p><p><a href=\"https://cdn.example.com/ep1.mp3?a=1&amp;b=2\">Play audio</a></p>")
+            == "<p><a href=\"https://cdn.example.com/ep1.mp3?a=1&amp;b=2\">Play audio</a></p><p>Show notes</p>")
 
         let document = ReaderSanitizer.document(ReaderInput(title: "Episode 1", metadata: "", body: article.contentHTML ?? "", baseURL: nil, allowsImages: false))
         #expect(document.links.values.map(\.absoluteString) == ["https://cdn.example.com/ep1.mp3?a=1&b=2"])
@@ -97,6 +97,6 @@ struct MediaFeedsTests {
         """)
         let article = try #require(feed.articles.first)
         #expect(article.link == "https://example.com/ep3")
-        #expect(article.contentHTML == "Notes<p><a href=\"https://cdn.example.com/ep3.mp3\">Play audio</a></p>")
+        #expect(article.contentHTML == "<p><a href=\"https://cdn.example.com/ep3.mp3\">Play audio</a></p>Notes")
     }
 }

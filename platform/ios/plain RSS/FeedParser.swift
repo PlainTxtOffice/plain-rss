@@ -144,7 +144,8 @@ nonisolated final class RSSFeedParser: NSObject, XMLParserDelegate {
                     }
                 }
                 if let enclosure, let link = MediaEntryContent.enclosureHTML(url: enclosure.url, type: enclosure.type) {
-                    item.contentHTML = (item.contentHTML ?? "") + link
+                    // First, so a long description never hides the way to play the episode.
+                    item.contentHTML = link + (item.contentHTML ?? "")
                 }
                 articles.append(item)
             }

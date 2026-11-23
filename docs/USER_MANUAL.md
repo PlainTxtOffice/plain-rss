@@ -19,7 +19,7 @@ list, and article reader.
 
 This manual describes the current repository implementation. Windows metadata
 reports version **0.1.0**; iOS application metadata reports **1.1.0**, build
-**3**; Android application metadata reports **1.1.0**. The Android app is
+**4**; Android application metadata reports **1.1.0**. The Android app is
 available on Google Play and the iOS app on the App Store. The App Store offers
 iOS version 1.0 until version 1.1.0 is released; features marked iOS 1.1.0
 arrive with that update. The Windows app is in development and has no released
@@ -159,7 +159,7 @@ an article marks it read; saved article text remains available offline.
 
 On iOS 1.1.0, a YouTube video shows its description and, after you allow images,
 its thumbnail; the button reads **Watch video** and opens the video outside the
-reader. An article with an attachment, such as a podcast episode, ends with a
+reader. An article with an attachment, such as a podcast episode, begins with a
 **Play audio**, **Play video**, **Open image**, or **Open attachment** link that
 opens the file outside the app. The app has no built-in audio or video player.
 
