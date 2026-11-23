@@ -37,8 +37,10 @@ nonisolated enum FeedFetcher {
     }
 
     /// Fetches a feed the user just typed in. If the address is a web page rather than a feed,
-    /// follows its advertised `<link rel="alternate">` feed. Returns the URL the feed was found at.
+    /// follows its advertised `<link rel="alternate">` feed. A YouTube channel or playlist address
+    /// that names its ID goes straight to that feed. Returns the URL the feed was found at.
     static func fetchNew(url: URL) async throws -> (url: URL, feed: FetchedFeed) {
+        let url = YouTubeAddress.feedURL(for: url) ?? url
         var request = URLRequest(url: url)
         request.timeoutInterval = 20
         request.cachePolicy = .reloadIgnoringLocalCacheData
@@ -74,19 +76,88 @@ nonisolated enum FeedFetcher {
         }
     }
 
-    private static func download(_ request: URLRequest) async throws -> (Data, HTTPURLResponse) {
-        let session = URLSession(configuration: FeedTransport.configuration())
-        defer { session.invalidateAndCancel() }
-        let (bytes, response) = try await session.bytes(for: request)
-        guard let http = response as? HTTPURLResponse else { throw FeedError.invalidResponse }
-        if http.expectedContentLength > Int64(maxBytes) { throw FeedError.tooLarge }
-        var data = Data()
-        if http.expectedContentLength > 0 { data.reserveCapacity(Int(http.expectedContentLength)) }
-        for try await byte in bytes {
-            if data.count >= maxBytes { throw FeedError.tooLarge }
-            data.append(byte)
+    /// Downloads a response in the chunks the network delivers, off the main actor,
+    /// and stops as soon as it exceeds `limit`.
+    static func download(
+        _ request: URLRequest,
+        configuration: URLSessionConfiguration = FeedTransport.configuration(),
+        limit: Int = maxBytes
+    ) async throws -> (Data, HTTPURLResponse) {
+        let collector = CappedDownload(limit: limit)
+        let session = URLSession(configuration: configuration, delegate: collector, delegateQueue: nil)
+        let task = session.dataTask(with: request)
+        // The session keeps its delegate alive until the task completes.
+        session.finishTasksAndInvalidate()
+        return try await withTaskCancellationHandler {
+            try await withCheckedThrowingContinuation { continuation in
+                collector.start(continuation)
+                task.resume()
+            }
+        } onCancel: {
+            task.cancel()
         }
-        return (data, http)
+    }
+}
+
+/// Collects one response body, enforcing a size limit while it arrives.
+/// Every delegate callback runs on the session's serial delegate queue.
+private nonisolated final class CappedDownload: NSObject, URLSessionDataDelegate, @unchecked Sendable {
+    private let limit: Int
+    private var data = Data()
+    private var response: HTTPURLResponse?
+    private var failure: Error?
+    private var continuation: CheckedContinuation<(Data, HTTPURLResponse), Error>?
+
+    init(limit: Int) { self.limit = limit }
+
+    /// Call before resuming the task, so no callback can arrive first.
+    func start(_ continuation: CheckedContinuation<(Data, HTTPURLResponse), Error>) {
+        self.continuation = continuation
+    }
+
+    func urlSession(
+        _ session: URLSession,
+        dataTask: URLSessionDataTask,
+        didReceive response: URLResponse,
+        completionHandler: @escaping @Sendable (URLSession.ResponseDisposition) -> Void
+    ) {
+        guard let http = response as? HTTPURLResponse else {
+            failure = FeedError.invalidResponse
+            completionHandler(.cancel)
+            return
+        }
+        guard http.expectedContentLength <= Int64(limit) else {
+            failure = FeedError.tooLarge
+            completionHandler(.cancel)
+            return
+        }
+        self.response = http
+        if http.expectedContentLength > 0 { data.reserveCapacity(Int(http.expectedContentLength)) }
+        completionHandler(.allow)
+    }
+
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive chunk: Data) {
+        guard failure == nil else { return }
+        guard data.count + chunk.count <= limit else {
+            failure = FeedError.tooLarge
+            dataTask.cancel()
+            return
+        }
+        data.append(chunk)
+    }
+
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        guard let continuation else { return }
+        self.continuation = nil
+        if let failure {
+            continuation.resume(throwing: failure)
+        } else if let error {
+            continuation.resume(throwing: error)
+        } else if let response {
+            continuation.resume(returning: (data, response))
+        } else {
+            continuation.resume(throwing: FeedError.invalidResponse)
+        }
     }
 }
 
@@ -94,8 +165,11 @@ nonisolated enum FeedFetcher {
 nonisolated enum FeedDiscovery {
     private static let feedTypes: Set<String> = ["application/rss+xml", "application/atom+xml", "application/rdf+xml"]
 
+    /// Large pages can advertise their feed late: a YouTube channel page does so about 900 KB in.
+    static let scanLimit = 4_000_000
+
     static func feedURL(in data: Data, pageURL: URL) -> URL? {
-        let html = String(decoding: data.prefix(500_000), as: UTF8.self)
+        let html = String(decoding: data.prefix(scanLimit), as: UTF8.self)
         guard let tags = try? NSRegularExpression(pattern: "<link\\b[^>]*>", options: .caseInsensitive) else { return nil }
         let range = NSRange(html.startIndex..., in: html)
         for match in tags.matches(in: html, range: range) {

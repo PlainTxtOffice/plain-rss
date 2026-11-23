@@ -1,9 +1,9 @@
 ---
-last_updated: 2026-11-22
-version: 6.0.0
+last_updated: 2026-11-23
+version: 6.1.0
 product_versions:
   windows: "0.1.0"
-  ios: "1.0"
+  ios: "1.1.0"
   android: "1.1.0"
 generated_from: "dev-docs/specs/USER_MANUAL_SPEC.instructions.md"
 ---
@@ -18,11 +18,12 @@ subscriptions, articles, and previews. iOS and Android use a feed list, article
 list, and article reader.
 
 This manual describes the current repository implementation. Windows metadata
-reports version **0.1.0**; iOS application metadata reports **1.0**, build
-**2**; Android application metadata reports **1.1.0**. The Android app is
-available on Google Play and the iOS app on the App Store. The Windows app is
-in development and has no released download. Features differ between
-platforms.
+reports version **0.1.0**; iOS application metadata reports **1.1.0**, build
+**3**; Android application metadata reports **1.1.0**. The Android app is
+available on Google Play and the iOS app on the App Store. The App Store offers
+iOS version 1.0 until version 1.1.0 is released; features marked iOS 1.1.0
+arrive with that update. The Windows app is in development and has no released
+download. Features differ between platforms.
 
 <!-- Verified from: platform/windows/pyproject.toml; platform/ios/plain RSS.xcodeproj/project.pbxproj; platform/android/app/build.gradle.kts; platform/windows/plain_rss/gui/views/root_window/window.py; platform/ios/plain RSS/ContentView.swift; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/PlainRssScreen.kt -->
 
@@ -126,7 +127,14 @@ the page advertises none, the app reports that no RSS or Atom feed was found.
 Duplicate feeds are rejected. Wait for an existing refresh to finish before
 adding another feed.
 
-<!-- Verified from: platform/ios/plain RSS/ContentView.swift [AddFeedSheet, addFeed]; platform/ios/plain RSS/FeedFetcher.swift [fetchNew]; platform/ios/plain RSS/FeedParser.swift [FeedError]; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/Dialogs.kt [AddFeedDialog]; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/viewmodel/ReaderViewModel.kt [addFeed]; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/network/FeedFetcher.kt [fetchNew]; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/model/ReaderModels.kt [FeedException] -->
+On iOS 1.1.0, you can also enter a YouTube channel or playlist address, such as
+`youtube.com/@name`, `youtube.com/channel/…`, or `youtube.com/playlist?list=…`.
+The app subscribes to the feed YouTube publishes for it, which lists the most
+recent videos. No YouTube account is involved. If YouTube answers a channel's
+`@name` address with a consent page instead of the channel, the app reports that
+no feed was found; use the channel's `youtube.com/channel/…` address instead.
+
+<!-- Verified from: platform/ios/plain RSS/ContentView.swift [AddFeedSheet, addFeed]; platform/ios/plain RSS/FeedFetcher.swift [fetchNew, FeedDiscovery]; platform/ios/plain RSS/MediaFeeds.swift [YouTubeAddress]; platform/ios/plain RSS/FeedParser.swift [FeedError]; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/Dialogs.kt [AddFeedDialog]; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/viewmodel/ReaderViewModel.kt [addFeed]; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/network/FeedFetcher.kt [fetchNew]; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/model/ReaderModels.kt [FeedException] -->
 
 ### Refresh subscriptions
 
@@ -149,7 +157,13 @@ Original links open outside the reader. The publisher controls the full
 article, availability, and any access requirements. On iOS and Android, opening
 an article marks it read; saved article text remains available offline.
 
-<!-- Verified from: platform/windows/plain_rss/gui/views/root_window/window.py [_open_selected_article]; platform/windows/plain_rss/gui/views/root_window/panes/preview.py; platform/ios/plain RSS/ContentView.swift [ArticleDetailView]; platform/ios/plain RSS/ReaderSettings.swift; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/PlainRssScreen.kt [ArticleDetailPane]; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/viewmodel/ReaderViewModel.kt [selectArticle]; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/MainActivity.kt [openExternalUrl] -->
+On iOS 1.1.0, a YouTube video shows its description and, after you allow images,
+its thumbnail; the button reads **Watch video** and opens the video outside the
+reader. An article with an attachment, such as a podcast episode, ends with a
+**Play audio**, **Play video**, **Open image**, or **Open attachment** link that
+opens the file outside the app. The app has no built-in audio or video player.
+
+<!-- Verified from: platform/windows/plain_rss/gui/views/root_window/window.py [_open_selected_article]; platform/windows/plain_rss/gui/views/root_window/panes/preview.py; platform/ios/plain RSS/ContentView.swift [ArticleDetailView]; platform/ios/plain RSS/ReaderSettings.swift; platform/ios/plain RSS/FeedParser.swift [RSSFeedParser]; platform/ios/plain RSS/MediaFeeds.swift [MediaEntryContent]; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/PlainRssScreen.kt [ArticleDetailPane]; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/viewmodel/ReaderViewModel.kt [selectArticle]; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/MainActivity.kt [openExternalUrl] -->
 
 ### Search, mark, and star on iOS and Android
 

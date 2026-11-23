@@ -29,6 +29,9 @@ nonisolated final class RSSFeedParser: NSObject, XMLParserDelegate {
     private var sawFeedRoot = false
     private var currentLinkIsAlternate = false
     private var hasPrimaryDate = false
+    private var mediaDescription: String?
+    private var mediaThumbnail: String?
+    private var enclosure: (url: String, type: String?)?
 
     static func parse(data: Data, sourceURL: URL) throws -> ParsedFeed {
         let delegate = RSSFeedParser()
@@ -70,6 +73,18 @@ nonisolated final class RSSFeedParser: NSObject, XMLParserDelegate {
             currentItem = ParsedArticle()
             currentLinkIsAlternate = false
             hasPrimaryDate = false
+            mediaDescription = nil
+            mediaThumbnail = nil
+            enclosure = nil
+        case "enclosure":
+            // RSS attachment, such as a podcast episode's audio file.
+            if isInsideItem, enclosure == nil, let url = attributeDict["url"], !url.isEmpty {
+                enclosure = (url, attributeDict["type"])
+            }
+        case "media:thumbnail":
+            if isInsideItem, mediaThumbnail == nil, let url = attributeDict["url"], !url.isEmpty {
+                mediaThumbnail = url
+            }
         case "image", "textinput", "author", "source", "contributor":
             if !isInsideItem { nonItemDepth += 1 }
         case "link":
@@ -79,7 +94,9 @@ nonisolated final class RSSFeedParser: NSObject, XMLParserDelegate {
                 if rel == "alternate", !currentLinkIsAlternate {
                     currentItem?.link = href
                     currentLinkIsAlternate = true
-                } else if currentItem?.link == nil, rel != "self", rel != "enclosure" {
+                } else if rel == "enclosure" {
+                    if enclosure == nil, !href.isEmpty { enclosure = (href, attributeDict["type"]) }
+                } else if currentItem?.link == nil, rel != "self" {
                     currentItem?.link = href
                 }
             }
@@ -118,7 +135,17 @@ nonisolated final class RSSFeedParser: NSObject, XMLParserDelegate {
         case "image", "textinput", "author", "source", "contributor":
             if !isInsideItem, nonItemDepth > 0 { nonItemDepth -= 1 }
         case "item", "entry":
-            if let item = currentItem {
+            if var item = currentItem {
+                // Media RSS fills in only when the entry has no content of its own, as in YouTube feeds.
+                if item.contentHTML == nil {
+                    item.contentHTML = MediaEntryContent.html(description: mediaDescription, thumbnail: mediaThumbnail)
+                    if item.summary.isEmpty, let mediaDescription {
+                        item.summary = mediaDescription.collapsingWhitespace
+                    }
+                }
+                if let enclosure, let link = MediaEntryContent.enclosureHTML(url: enclosure.url, type: enclosure.type) {
+                    item.contentHTML = (item.contentHTML ?? "") + link
+                }
                 articles.append(item)
             }
             currentItem = nil
@@ -152,6 +179,8 @@ nonisolated final class RSSFeedParser: NSObject, XMLParserDelegate {
             if element == "content" || element == "content:encoded" || currentItem?.contentHTML == nil {
                 currentItem?.contentHTML = text
             }
+        case "media:description":
+            if mediaDescription == nil { mediaDescription = text }
         case "pubdate", "published":
             if let date = RSSDateParser.parse(text) {
                 currentItem?.publishedAt = date

@@ -756,7 +756,7 @@ struct AddFeedSheet: View {
                         Text(errorMessage)
                             .foregroundStyle(.red)
                     } else {
-                        Text("Enter the address of an RSS or Atom feed.")
+                        Text("Enter the address of an RSS or Atom feed, a website, or a YouTube channel.")
                     }
                 }
             }
@@ -837,7 +837,13 @@ struct ArticleDetailView: View {
                     Label(article.isStarred ? "Unstar" : "Star", systemImage: article.isStarred ? "star.fill" : "star")
                 }.tint(.orange)
                 if let originalURL {
-                    Link(destination: originalURL) { Label("Open full article", systemImage: "safari") }
+                    Link(destination: originalURL) {
+                        if YouTubeAddress.isVideo(originalURL) {
+                            Label("Watch video", systemImage: "play.rectangle")
+                        } else {
+                            Label("Open full article", systemImage: "safari")
+                        }
+                    }
                 }
             }
         }
