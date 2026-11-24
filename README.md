@@ -126,7 +126,7 @@ setup, everyday tasks, settings, and troubleshooting.
 ## Feedback
 
 Send bug reports and feature requests to
-[support@plaintxtoffice.com](mailto:support@plaintxtoffice.com), through the
+[feedback@plaintxtoffice.com](mailto:feedback@plaintxtoffice.com), through the
 [contact page](https://plaintxtoffice.com/contact/), or in
 [GitHub Issues](https://github.com/PlainTxtOffice/plain-rss/issues). In the
 Android and iOS apps, choose **More > Send Feedback** to prepare an email with

@@ -32,7 +32,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-FEEDBACK_ADDRESS = "support@plaintxtoffice.com"
+FEEDBACK_ADDRESS = "feedback@plaintxtoffice.com"
 CONTACT_URL = "https://plaintxtoffice.com/contact/"
 
 _EMAIL_FAILURE = (

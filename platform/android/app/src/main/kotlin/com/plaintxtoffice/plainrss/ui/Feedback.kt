@@ -10,7 +10,7 @@ import androidx.core.net.toUri
 import com.plaintxtoffice.plainrss.R
 
 /** Address that receives bug reports and feature requests. */
-const val FEEDBACK_ADDRESS = "support@plaintxtoffice.com"
+const val FEEDBACK_ADDRESS = "feedback@plaintxtoffice.com"
 
 /** Contact page that receives bug reports, feature requests, and privacy questions. */
 const val CONTACT_URL = "https://plaintxtoffice.com/contact/"

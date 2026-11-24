@@ -34,6 +34,6 @@ class FeedbackTest {
 
   @Test
   fun feedbackAddress_isSupportMailbox() {
-    assertEquals("support@plaintxtoffice.com", FEEDBACK_ADDRESS)
+    assertEquals("feedback@plaintxtoffice.com", FEEDBACK_ADDRESS)
   }
 }

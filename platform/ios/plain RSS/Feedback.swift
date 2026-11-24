@@ -18,7 +18,7 @@ nonisolated enum FeedbackKind {
 /// summary; feed addresses, article content and the library are never added.
 nonisolated enum Feedback {
     /// Address that receives bug reports and feature requests.
-    static let address = "support@plaintxtoffice.com"
+    static let address = "feedback@plaintxtoffice.com"
     /// Contact page that receives bug reports, feature requests, and privacy questions.
     static let contactURL = URL(string: "https://plaintxtoffice.com/contact/")!
 

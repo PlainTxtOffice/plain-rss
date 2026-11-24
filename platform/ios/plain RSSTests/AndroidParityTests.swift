@@ -22,7 +22,7 @@ struct AndroidParityTests {
         let url = try #require(Feedback.emailURL(kind: .bugReport, deviceSummary: "Plain RSS 1.0 (1)\niOS 26.4\niPhone17,1"))
         let components = try #require(URLComponents(url: url, resolvingAgainstBaseURL: false))
         #expect(components.scheme == "mailto")
-        #expect(components.path == "support@plaintxtoffice.com")
+        #expect(components.path == "feedback@plaintxtoffice.com")
         let items = Dictionary(uniqueKeysWithValues: (components.queryItems ?? []).map { ($0.name, $0.value ?? "") })
         #expect(items.count == 2)
         #expect(items["subject"] == "Plain RSS bug report (iOS)")

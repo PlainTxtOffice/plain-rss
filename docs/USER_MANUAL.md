@@ -1,5 +1,5 @@
 ---
-last_updated: 2026-11-23
+last_updated: 2026-11-24
 version: 6.1.0
 product_versions:
   windows: "0.1.0"
@@ -455,7 +455,7 @@ still deletes its starred articles. OPML export is not an article backup.
 ## Feedback
 
 To report a bug or request a feature, email
-[support@plaintxtoffice.com](mailto:support@plaintxtoffice.com), use the
+[feedback@plaintxtoffice.com](mailto:feedback@plaintxtoffice.com), use the
 contact form at <https://plaintxtoffice.com/contact/>, or open an issue in
 [GitHub Issues](https://github.com/PlainTxtOffice/plain-rss/issues), since
 Plain RSS is open source.
@@ -471,7 +471,8 @@ Each app also has a feedback window:
 | Windows (in development) | Choose **Help > Send Feedback...**. |
 
 - **Report a bug** and **Request a feature** open a draft in your email app,
-  addressed to `support@plaintxtoffice.com`. The draft already contains the app
+  addressed to `feedback@plaintxtoffice.com`, or to `support@plaintxtoffice.com`
+  in Android 1.1.0 and iOS 1.0 and earlier. The draft already contains the app
   version and your system version; on iOS and Android it also contains the
   device model. Your feeds and articles are not added; include a feed address
   yourself if the problem involves one.
