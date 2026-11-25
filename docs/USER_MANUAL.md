@@ -1,6 +1,6 @@
 ---
-last_updated: 2026-11-24
-version: 6.1.1
+last_updated: 2026-11-25
+version: 6.1.2
 product_versions:
   windows: "0.1.0"
   ios: "1.1.0"
@@ -471,7 +471,7 @@ Each app also has a feedback window:
 
 - **Report a bug** and **Request a feature** open a draft in your email app,
   addressed to `feedback@plaintxtoffice.com`, or to `support@plaintxtoffice.com`
-  in Android 1.1.0 and iOS 1.0 and earlier. The draft already contains the app
+  in version 1.1.0 and earlier. The draft already contains the app
   version and your system version; on iOS and Android it also contains the
   device model. Your feeds and articles are not added; include a feed address
   yourself if the problem involves one.

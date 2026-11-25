@@ -15,7 +15,11 @@ val releaseStoreFile = keystoreProperties.getProperty("storeFile").orEmpty()
 
 android {
   namespace = "com.plaintxtoffice.plainrss"
-  compileSdk = 37
+  compileSdk {
+    version = release(37) {
+      minorApiLevel = 1
+    }
+  }
   defaultConfig {
     applicationId = "com.plaintxtoffice.plainrss"
     minSdk = 26
