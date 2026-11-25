@@ -1,6 +1,6 @@
 ---
 last_updated: 2026-11-24
-version: 6.1.0
+version: 6.1.1
 product_versions:
   windows: "0.1.0"
   ios: "1.1.0"
@@ -20,10 +20,9 @@ list, and article reader.
 This manual describes the current repository implementation. Windows metadata
 reports version **0.1.0**; iOS application metadata reports **1.1.0**, build
 **4**; Android application metadata reports **1.1.0**. The Android app is
-available on Google Play and the iOS app on the App Store. The App Store offers
-iOS version 1.0 until version 1.1.0 is released; features marked iOS 1.1.0
-arrive with that update. The Windows app is in development and has no released
-download. Features differ between platforms.
+available on Google Play and the iOS app on the App Store. Features marked iOS
+1.1.0 need that version or later. The Windows app is in development and has no
+released download. Features differ between platforms.
 
 <!-- Verified from: platform/windows/pyproject.toml; platform/ios/plain RSS.xcodeproj/project.pbxproj; platform/android/app/build.gradle.kts; platform/windows/plain_rss/gui/views/root_window/window.py; platform/ios/plain RSS/ContentView.swift; platform/android/app/src/main/kotlin/com/plaintxtoffice/plainrss/ui/PlainRssScreen.kt -->
 
@@ -34,7 +33,7 @@ download. Features differ between platforms.
 | Platform | Requirements and availability |
 | --- | --- |
 | Windows (in development) | Not released yet; there is no download to install. |
-| iOS | Version 1.0 on the [App Store](https://apps.apple.com/app/id6837553488). Requires iOS 26.4 or later on iPhone or iPad. |
+| iOS | Version 1.1.0 on the [App Store](https://apps.apple.com/app/id6837553488). Requires iOS 26.4 or later on iPhone or iPad. |
 | Android | Available on [Google Play](https://play.google.com/store/apps/details?id=com.plaintxtoffice.plainrss). Requires Android 8.0 or later. |
 
 Install the Android app from Google Play or the iOS app from the App Store;

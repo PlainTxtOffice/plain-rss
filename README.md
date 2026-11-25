@@ -1,4 +1,4 @@
-<!-- last_updated: 2026-11-22 -->
+<!-- last_updated: 2026-11-24 -->
 <!-- Authoring guidance: dev-docs/specs/README_SPEC.instructions.md -->
 <!-- rumdl-disable MD033 MD041 -->
 <p align="center">
@@ -66,6 +66,8 @@ when you open it.
 
 - Subscribe with a feed address, or with a website's address when you do not
   know the feed; the app finds the feed the page advertises.
+- On iPhone and iPad, follow YouTube channels and playlists by their address,
+  and open podcast episodes and other attachments in the app of your choice.
 - Read downloaded articles offline in a clean reader, and open the original
   story in your browser when you want more.
 - Browse all, unread or starred articles, and search article titles and
@@ -112,7 +114,7 @@ when a capture is available.
 | Platform | Download | Notes |
 | --- | --- | --- |
 | Android | [Google Play](https://play.google.com/store/apps/details?id=com.plaintxtoffice.plainrss) | Requires Android 8.0 or later. |
-| iOS | [App Store](https://apps.apple.com/app/id6837553488) | Version 1.0. Requires iOS 26.4 or later on iPhone or iPad. |
+| iOS | [App Store](https://apps.apple.com/app/id6837553488) | Version 1.1.0. Requires iOS 26.4 or later on iPhone or iPad. |
 
 The Windows app has not been released yet.
 
